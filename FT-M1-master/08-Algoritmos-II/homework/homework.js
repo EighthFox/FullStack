@@ -6,20 +6,16 @@ function quickSort(array) {
   // el array recibido como parámetro
   // Devolver el array ordenado resultante
   // Tu código:
-  
-}
 
+}
 
 function mergeSort(array) {
   // Implementar el método conocido como mergeSort para ordenar de menor a mayor
   // el array recibido como parámetro
   // Devolver el array ordenado resultante
   // Tu código:
-  
-}
 
-function mergeFunction(left, right){
- 
+  //okey probemos ahora
 }
 
 // No modificar nada debajo de esta línea

@@ -1,28 +1,94 @@
-# Homework Algoritmos I
+# ALGORITMOS I | Homework
 
-## Factoreando Números
+## 📒 Temas de la clase
 
-Se acuerdan como factoreaban números en la escuela? Hagamos un algoritmo para eso! Hay que seguir estos pasos:
+-  Pseudocódigo.
+-  Algoritmos.
+-  Eficiencia.
+-  Complejidad - Big O Notation.
+-  Bubble Sort.
+-  Insertion Sort.
+-  Selection Sort.
 
-1. Empezamos intentando dividir el número en dos, si el resto es cero, lo seguimos haciendo hasta que no sea cero. En cada pasa agregamos el número como factor.
-2. Pasamos a el siguiente factor que no sea divisible con ningún anterior (en la segunda pasada seria el tres) y dividimos, si el resto es cero, lo agregamos como factor, si no, pasamos al siguiente factor.
+---
 
-- ¿Cómo implementarían este algoritmo?
-- ¿Funciona bien? Comparen con los resultados de sus compañeros.
-- ¿Qué complejidad tiene el algoritmo que escribieron? ¿Lo pueden mejorar?
+## 👀 Aprendizaje esperado
 
-## BubbleSort
+Al finalizar este homework estarás en la capacidad de:
 
-- Implementar el algoritmo BubbleSort.
-- Agregen funcionalidad para poder medir el tiempo que tarda en ordenar.
-- ¿Como podemos reducir el tiempo? Buscar mejoras de BubbleSort.
+-  Diseñar algoritmos como método lógico para la resolución de problemas.
+-  Implementar algoritmos creados en pseudocódigo con Javascript para ejecutarlos y comprobar su eficiencia.
 
-## InsertionSort
+---
 
-- Implementar el algoritmo InsertionSort.
-- Calculen la complejidad de tu implementación.
+## ⏱ Duración estimada
 
-## SelectionSort
+> 2 horas
 
-- Implementar el algoritmo SelectionSort.
-- Calculen la complejidad de tu implementación.
+---
+
+## 📋 Instrucciones preliminares
+
+1. Para ubicarte dentro de la carpeta homework escribe en tu terminal los siguientes comandos:
+   -  cd + [06-Algoritmos-I].
+   -  cd + [homework].
+2. Luego, instalaremos las dependencias con el comando:
+
+```javascript
+npm install
+```
+
+3. Listo! Ya puedes correr los test con el comando:
+
+```javascript
+npm test
+```
+
+---
+
+## 👩‍💻 **CONSIGNA**
+
+Tu tarea será definir 4 algoritmos. Cada uno deberá cumplir un objetivo específico, pero el procedimiento para construirlos es similar:
+
+</br >
+
+### 🟡 **Ejercicio 1**
+
+Comienza por entender el objetivo, los tipos de datos con los que estarás trabajando (inputs y outputs esperados), y las operaciones que se verán involucradas.
+
+</br >
+
+### 🟡 **Ejercicio 2**
+
+Define los pasos a seguir para alcanzar dicho objetivo. Recuerda contemplar casos límites (por ejemplo, ¿qué pasa si el input es 0?).
+
+</br >
+
+### 🟡 **Ejercicio 3**
+
+Una vez tengas una solución planteada en pseudocódigo, ¡puedes comenzar a trabajar en código Javascript!
+
+</br >
+
+### 🟡 **Ejercicio 4**
+
+Cuando hayas logrado una solución que cumpla el objetivo y pase los tests, observa: ¿Qué complejidad tiene tu algoritmo? ¿Podrías refactorizarlo para que sea más eficiente?
+
+</br >
+
+En este punto puedes comenzar a codear, verás instrucciones dentro del archivo _**homework.js**_.
+
+---
+
+## 🧠 Recuerda que...
+
+-  Un algoritmo es una secuencia ordenada de instrucciones para resolver un problema.
+-  La calidad de un algoritmo no está definida exclusivamente por el cumplimiento del objetivo sino también por la eficiencia del procedimiento.
+
+</br >
+
+---
+
+## **✅ FEEDBACK**
+
+### Usa este [**formulario**](https://docs.google.com/forms/d/e/1FAIpQLSe1MybH_Y-xcp1RP0jKPLndLdJYg8cwyHkSb9MwSrEjoxyzWg/viewform) para reportar tus observaciones de mejora o errores. Tu feedback es muy importante para seguir mejorando el modelo educativo.

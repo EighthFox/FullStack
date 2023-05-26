@@ -4,11 +4,11 @@
 
 La idea de esta homework será realizar TDD para el desarrollo de una aplicación en JS utilizando JEST. A continuación se irán detallando paso a paso las funcionalidades que deberá tener el programa y ustedes tendrán que ir haciendo para caso paso:
 
-  1. Armar el asociado a esa funcionalidad
-  2. Ejecutarlo chequeando que no pasen
-  3. Completar el código JS para hacer pasar el test
-  4. Ejecutar y verificar que pase el test sin haber roto ningún test anterior, sino volver a 3 arreglando los errores
-  5. Avanzar a la siguiente funcionalidad
+1. Armar el asociado a esa funcionalidad
+2. Ejecutarlo chequeando que no pasen
+3. Completar el código JS para hacer pasar el test
+4. Ejecutar y verificar que pase el test sin haber roto ningún test anterior, sino volver a 3 arreglando los errores
+5. Avanzar a la siguiente funcionalidad
 
 ## Configuración
 
@@ -18,7 +18,7 @@ Inicialmente si ejecutan el comando `npm test` no va a funcionar correctamente y
 
 ```js
 it('Always true', () => {
-  expect(true).toBe(true);
+   expect(true).toBe(true);
 });
 ```
 
@@ -30,13 +30,13 @@ it('Always true', () => {
 
 Ahora si pueden borrar el test de ejemplo de recién y vamos a comenzar a armar los verdaderos tests usando TDD.
 
-___
+---
 
 ### TEST ONE
 
 Comprobar que existe una función llamada `checkSeatStatus`. Les dejamos comentado la linea del require que nos va a permitir utilizar la función definida en el archivo `homework.js` dentro de `index.test.js`, descomentarla.
 
-__PISTA__: Deberán chequear que esa variable sea de tipo 'function' (¿Cómo era esto? Estoy seguro que lo vimos en el Prep)
+**PISTA**: Deberán chequear que esa variable sea de tipo 'function' (¿Cómo era esto? Estoy seguro que lo vimos en el Prep)
 
 <details>
   <summary>ANSWER TEST CODE</summary>
@@ -44,14 +44,13 @@ __PISTA__: Deberán chequear que esa variable sea de tipo 'function' (¿Cómo er
   ```js
   const { checkSeatStatus } = require('../homework');
 
-  it('checkSeatStatus is a function', () => {
-    expect(typeof checkSeatStatus).toBe('function');
-  });
-  ```
+it('checkSeatStatus is a function', () => { expect(typeof checkSeatStatus).toBe('function'); });
+
+````
 </details>
 
 <p align="center">
-  <img src="../../_src/assets/EXTRA-Testing/checkSeatStatus-1-error.png" />
+<img src="../../_src/assets/EXTRA-Testing/checkSeatStatus-1-error.png" />
 </p>
 
 ___
@@ -61,24 +60,25 @@ ___
 Ahora escribamos el código para que ese test que acabamos de crear y no está pasando si pase. Para ello tendrás que crear la función `checkSeatStatus` en el archivo `homeowrk.js`. Les dejamos comentado unas lineas al final del archivo para exportar la función para que pueda ser utilizada en otros archivos, descomentarla.
 
 <details>
-  <summary>ANSWER CODE</summary>
-  
-  ```js
-  function checkSeatStatus() {
+<summary>ANSWER CODE</summary>
 
-  }
+```js
+function checkSeatStatus() {
 
-  module.exports = {
-    checkSeatStatus
-  }
-  ```
+}
+
+module.exports = {
+  checkSeatStatus
+}
+````
+
 </details>
 
 <p align="center">
   <img src="../../_src/assets/EXTRA-Testing/checkSeatStatus-1-pass.png" />
 </p>
 
-___
+---
 
 ### TEST TWO
 
@@ -94,7 +94,7 @@ La función `checkSeatStatus` debe recibir como primer parámetro un string, de 
   ```
 </details>
 
-___
+---
 
 ### CODE TWO
 
@@ -110,7 +110,7 @@ Cuando hacemos TDD buscamos realizar el código mínimo necesario para que los t
   ```
 </details>
 
-___
+---
 
 ### TEST THREE
 
@@ -126,7 +126,7 @@ Ahora queremos que el segundo parámetro de la función sea un número, de lo co
   ```
 </details>
 
-___
+---
 
 ### CODE THREE
 
@@ -143,7 +143,7 @@ Si miramos nuestro código anterior nos daremos cuenta de que no estaba tan bien
   ```
 </details>
 
-___
+---
 
 ### TEST FOUR
 
@@ -151,16 +151,42 @@ Para continuar con el ejercicio, vamos a mockear información simulando el layou
 
 ```js
 const layout = [
-  [{type: 'VIP', booked: false}, {type: 'VIP', booked: true}, {type: 'VIP', booked: true}, {type: 'VIP', booked: false}],
-  [{type: 'NORMAL', booked: false}, {type: 'VIP', booked: true}, {type: 'VIP', booked: false}, {type: 'NORMAL', booked: false}],
-  [{type: 'NORMAL', booked: false}, {type: 'NORMAL', booked: true}, {type: 'NORMAL', booked: true}, {type: 'NORMAL', booked: false}],
-  [{type: 'ECONOMIC', booked: true}, {type: 'NORMAL', booked: true}, {type: 'NORMAL', booked: true}, {type: 'ECONOMIC', booked: false}],
-  [{type: 'ECONOMIC', booked: false}, {type: 'ECONOMIC', booked: true}, {type: 'ECONOMIC', booked: false}, {type: 'ECONOMIC', booked: false}]
+   [
+      { type: 'VIP', booked: false },
+      { type: 'VIP', booked: true },
+      { type: 'VIP', booked: true },
+      { type: 'VIP', booked: false },
+   ],
+   [
+      { type: 'NORMAL', booked: false },
+      { type: 'VIP', booked: true },
+      { type: 'VIP', booked: false },
+      { type: 'NORMAL', booked: false },
+   ],
+   [
+      { type: 'NORMAL', booked: false },
+      { type: 'NORMAL', booked: true },
+      { type: 'NORMAL', booked: true },
+      { type: 'NORMAL', booked: false },
+   ],
+   [
+      { type: 'ECONOMIC', booked: true },
+      { type: 'NORMAL', booked: true },
+      { type: 'NORMAL', booked: true },
+      { type: 'ECONOMIC', booked: false },
+   ],
+   [
+      { type: 'ECONOMIC', booked: false },
+      { type: 'ECONOMIC', booked: true },
+      { type: 'ECONOMIC', booked: false },
+      { type: 'ECONOMIC', booked: false },
+   ],
 ];
 ```
+
 Copienlo en el archivo `homework.js` para poder utilizarlo dentro de la función `checkSeatStatus`. Pero antes vamos a armar otra función ahora en el archivo `homework.js` llamada `getRowNumber` que nos va a permitir a partir de una letra devolver el número de fila asociado. Por ejemplo la fila 'A' sería la posición 0, la fila 'C' sería la 2.
 
-__IMPORTANTE__: Vamos a tener que exportar la nueva función en el archivo `homework.js` y por otro lado requerirla en `index.test.js`
+**IMPORTANTE**: Vamos a tener que exportar la nueva función en el archivo `homework.js` y por otro lado requerirla en `index.test.js`
 
 ```js
 // homework.js
@@ -191,10 +217,9 @@ Creemos el test para esta función probemos con las dos letras de ejemplo que di
     expect(getRowNumber('A')).toBe(0);
   });
 
-  it('should return 3 if the letter given is a C', () => {
-    expect(getRowNumber('C')).toBe(2);
-  });
-  ```
+it('should return 3 if the letter given is a C', () => { expect(getRowNumber('C')).toBe(2); });
+
+````
 </details>
 
 ___
@@ -204,23 +229,24 @@ ___
 ¿Y cómo paso de una letra a un número de fila?
 
 <p align="center">
-  <img src="../../_src/assets/EXTRA-Testing/fine.jpg" />
+<img src="../../_src/assets/EXTRA-Testing/fine.jpg" />
 </p>
 
 <details>
-  <summary>¡AUXILIO! PEDIR PISTA</summary>
-  
-  ```js
-  // Podemos usar el código de las letras mayúsculas
-  // Sabemos que .charCodeAt(0) aplicado al argumento row nos daria el código asociado
-  // a dicha letra de fila y que la 'A' tiene código 65, la 'B' 66 y así sucesivamente...
-  // Por lo tanto podríamos hacer algo así:
-  row.charCodeAt(0) - 65;
-  // De esta forma:
-  //    'A' --> 0
-  //    'B' --> 1
-  //     ...
-  ```
+<summary>¡AUXILIO! PEDIR PISTA</summary>
+
+```js
+// Podemos usar el código de las letras mayúsculas
+// Sabemos que .charCodeAt(0) aplicado al argumento row nos daria el código asociado
+// a dicha letra de fila y que la 'A' tiene código 65, la 'B' 66 y así sucesivamente...
+// Por lo tanto podríamos hacer algo así:
+row.charCodeAt(0) - 65;
+// De esta forma:
+//    'A' --> 0
+//    'B' --> 1
+//     ...
+````
+
 </details>
 
 <details>
@@ -233,7 +259,7 @@ ___
   ```
 </details>
 
-___
+---
 
 ### TEST FIVE
 
@@ -247,10 +273,9 @@ Lo que vamos a hacer ahora es crear un test que, a partir de una letra que va a 
     expect(checkSeatStatus('A', 1)).toBe(true);
   });
 
-  it('should return false if the given seat defined by row and column is not booked', () => {
-    expect(checkSeatStatus('E', 3)).toBe(false);
-  });
-  ```
+it('should return false if the given seat defined by row and column is not booked', () => { expect(checkSeatStatus('E', 3)).toBe(false); });
+
+````
 </details>
 
 ___
@@ -260,26 +285,27 @@ ___
 Vamos a reutilizar la función `getRowNumber` dentro de `getSeatStatus` para saber hasta que posición de la matriz debemos iterar. Y luego accederemos a la columna a partir del número que nos pasen por parámetro y cuando estemos en el asiento indicado debremos ver si su propiedad `booked` es `true` o `false`.
 
 <details>
-  <summary>ANSWER CODE</summary>
-  
-  ```js
-  function checkSeatStatus(row, number) {
-    if(typeof row !== 'string') throw new TypeError('First parameter is not a string');
-    if(typeof number !== 'number') throw new TypeError('Second parameter is not a number');
+<summary>ANSWER CODE</summary>
 
-    const numberRow = getRowNumber(row);
-    const layoutRows = layout[numberRow];
-    const seat = layoutRows[number];
-    return seat.booked;
-  }
-  ```
+```js
+function checkSeatStatus(row, number) {
+  if(typeof row !== 'string') throw new TypeError('First parameter is not a string');
+  if(typeof number !== 'number') throw new TypeError('Second parameter is not a number');
+
+  const numberRow = getRowNumber(row);
+  const layoutRows = layout[numberRow];
+  const seat = layoutRows[number];
+  return seat.booked;
+}
+````
+
 </details>
 
 <p align="center">
   <img src="../../_src/assets/EXTRA-Testing/stop.png" />
 </p>
 
-___
+---
 
 ### REFACTOR
 
@@ -293,20 +319,19 @@ Podemos intentar agrupar los tests según algun criterio, por ejemplo, podría s
     ...
   });
 
-  describe('getRowNumber', () => {
-    ...
-  });
-  ```
+describe('getRowNumber', () => { ... });
+
+````
 </details>
 
 <p align="center">
-  <img src="../../_src/assets/EXTRA-Testing/describe.png" />
+<img src="../../_src/assets/EXTRA-Testing/describe.png" />
 </p>
 
 Sigamos...
 
 <p align="center">
-  <img src="../../_src/assets/EXTRA-Testing/never-ends.jpg" />
+<img src="../../_src/assets/EXTRA-Testing/never-ends.jpg" />
 </p>
 
 ___
@@ -314,30 +339,31 @@ ___
 ### TEST SIX
 
 Sigamos ahora con una función para simular la compra de uno de los asientos, vamos a tener que especificarle al igual que en `checkSeatStatus` la letra de la fila y el número de columna y deberíamos testear dos posibles casos:
-  - Si el asiento está libre debería reservarlo y retornar 'Seat in XX successfully booked'
-  - Si el asiento está reservado debería dejarlo como estaba y retornar 'Seat in XX is already booked'
+- Si el asiento está libre debería reservarlo y retornar 'Seat in XX successfully booked'
+- Si el asiento está reservado debería dejarlo como estaba y retornar 'Seat in XX is already booked'
 Donde XX es la posición del asiento representada por fila y columna como veníamos hablando.
 Mantengamos el orden de los describe y agrupemos estos dos nuevos tests en otro describe.
 
 Llamaremos a la función `book` por lo que como ya hicimos con las funciones anteriores tendremos que agregarla en el `homework..js`, exportarla y requerirla desde `index.test.js`. Por ahora no hagamos la funcionalidad solo el 'esqueleto' para seguir haciendo TDD. ¿Cómo quedarían estos dos tests?
 
 <details>
-  <summary>ANSWER TEST CODE</summary>
-  
-  ```js
-  describe('book', () => {
-    it('should return "Seat in XX successfully booked" if the given seat is not booked', () => {
-      expect(book('E',3)).toBe('Seat in E3 successfully booked');
-    });
-    
-    it('should return "Seat in XX is already booked" if the given seat is already booked', () => {
-      expect(book('A',1)).toBe('Seat in A1 is already booked');
-    });
+<summary>ANSWER TEST CODE</summary>
+
+```js
+describe('book', () => {
+  it('should return "Seat in XX successfully booked" if the given seat is not booked', () => {
+    expect(book('E',3)).toBe('Seat in E3 successfully booked');
   });
-  ```
+
+  it('should return "Seat in XX is already booked" if the given seat is already booked', () => {
+    expect(book('A',1)).toBe('Seat in A1 is already booked');
+  });
+});
+````
+
 </details>
 
-___
+---
 
 ### CODE SIX
 
@@ -391,23 +417,18 @@ Adicionalmente si prestamos atención a las funciones `checkSeatStatus` y `book`
     const layoutRows = layout[numberRow];
     const seat = layoutRows[number];
     return seat;
-  } 
+  }
 
-  function checkSeatStatus(row, number) {
-    if(typeof row !== 'string') throw new TypeError('First parameter is not a string');
-    if(typeof number !== 'number') throw new TypeError('Second parameter is not a number');
+function checkSeatStatus(row, number) { if(typeof row !== 'string') throw new TypeError('First parameter is not a string'); if(typeof number !== 'number') throw new TypeError('Second parameter is not a number');
 
     const seat = getSeat(row, number);
     return seat.booked;
-  }
 
-  function book(row, number) {
-    if(checkSeatStatus(row,number)) return `Seat in ${row}${number} is already booked`;
-    const seat = getSeat(row, number);
-    seat.booked = true;
-    return `Seat in ${row}${number} successfully booked`
-  }
-  ```
+}
+
+function book(row, number) { if(checkSeatStatus(row,number)) return `Seat in ${row}${number} is already booked`; const seat = getSeat(row, number); seat.booked = true; return `Seat in ${row}${number} successfully booked` }
+
+```
 </details>
 
 Fijense que no cambiamos nada de funcionalidad, sino que solamente reorganizamos nuestro código, de hecho si corremos los tests van a seguir funcionando todos.
@@ -419,7 +440,7 @@ ___
 Para los próximos pasos ya no tendrán ayudas de código, simplemente les diremos que funcionalidades deben agregar siguiendo TDD como veníamos haciendo.
 
 <p align="center">
-  <img src="../../_src/assets/EXTRA-Testing/i-can.jpg" />
+<img src="../../_src/assets/EXTRA-Testing/i-can.jpg" />
 </p>
 
 Funcionalidades a agregar:
@@ -428,3 +449,12 @@ Funcionalidades a agregar:
 - Verificar que la letra de la fila no este asociada a un número que supere la cantidad de filas del layout y sino devolver un mensaje que indique el rango de letras aceptadas
 - Verificar que la columna no supere la cantidad de columnas para esa fila y sino devolver un mensaje que indique el rango de números aceptados para esa fila
 - Obtener un resumen del layout en determinado momento, indicando cantidad de asientos totales, cantidad de asientos reservados, cantidad de asientos libres y recaudación suponiendo que cada asiento `ECONOMIC` cuesta 300 pesos, los `NORMAL` 450 pesos y los `VIP` 600 pesos.
+
+</br >
+
+---
+
+## **✅ FEEDBACK**
+
+### Usa este [**formulario**](https://docs.google.com/forms/d/e/1FAIpQLSe1MybH_Y-xcp1RP0jKPLndLdJYg8cwyHkSb9MwSrEjoxyzWg/viewform) para reportar tus observaciones de mejora o errores. Tu feedback es muy importante para seguir mejorando el modelo educativo.
+```
