@@ -104,19 +104,21 @@ console.log(miLista);
 
 var array = new Array(35)
 console.log(array.length)
-var obj = {name: 'hola'}
+var obj = {'name': 'hola'}
 array[2] = obj;
+array[5] = {'hola': 'manola'}
 console.log(obj.name)
-console.log(array[2]['name'])
+console.log(array[2].name)
+console.log(array[2].hasOwnProperty('name'))
+
+
 
 function hash(string_name){
     var hashNumber = 0;
-    for (letter in string_name){
+    for (letter of string_name){
         console.log(letter);
         hashNumber = hashNumber + letter.charCodeAt();
     }
-    hashNumber = hashNumber;
+    hashNumber = hashNumber%35;
     return hashNumber;
 }
-
-console.log(hash('this is a key'))

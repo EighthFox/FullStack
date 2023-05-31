@@ -26,6 +26,7 @@ function LinkedList() {
     }
     current.next = newNode;
     this.size++;
+    return newNode;
   }
   this.remove = function(){
     if(this.head){
@@ -87,27 +88,47 @@ La clase debe tener los siguientes métodos:
 Ejemplo: supongamos que quiero guardar {instructora: 'Ani'} en la tabla. Primero puedo chequear, con hasKey, si ya hay algo en la tabla con el nombre 'instructora'; luego, invocando set('instructora', 'Ani'), se almacenará el par clave-valor en un bucket específico (determinado al hashear la clave)
 */
 function HashTable() {
+
   this.numBuckets = 35;
+
   this.arr = new Array(this.numBuckets);
-  this.hash = function(string){
+
+  this.hash = function(key){
     var hashNumber = 0;
-    for(let letter in string){
+    for(let letter of key){
       hashNumber = hashNumber + letter.charCodeAt();
     }
-    hashNumber = (hashNumber+2)%this.numBuckets;
+    hashNumber = hashNumber%this.numBuckets;
     return hashNumber;
   }
+
   this.set = function(key, value){
+    if(typeof key !== 'string') throw TypeError("Keys must be strings");
     var hashKey = this.hash(key);
-    this.arr[hashKey] = { key:value };
+    if(!this.arr[hashKey]){
+      this.arr[hashKey] = {};
+    }
+    this.arr[hashKey][key] = value;
   }
+
   this.get = function(key){
     var hashKey = this.hash(key);
-    return this.arr[hashKey][key];
+    const bucket = this.arr[hashKey];
+    if(bucket){
+      return bucket[key];
+    }
+    return null;
   }
+
   this.hasKey = function(key){
-    var hashKey = this.hash(key);
-    return (this.arr[hashKey].hasOwnProperty(key));
+    if(this.get(key)){
+      return true;
+    }
+    else{
+      return false;
+    }
+    // var hashKey = this.hash(key);
+    // return (this.arr[hashKey] != undefined);
   }
 }
 
