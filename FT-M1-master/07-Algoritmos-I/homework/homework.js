@@ -14,9 +14,22 @@ function bubbleSort(array) {
   // el array recibido como parámetro
   // Devolver el array ordenado resultante
   // Tu código:
-
+  for(let j = 0; j < array.length-1; j++){
+    for(let i = 0; i < array.length; i++){
+      if(array[i] > array[i+1]){
+        var aux = array[i+1];
+        array[i+1] = array[i];
+        array[i] = aux;
+      }
+    }
+  }
+  return array;
 }
 
+var arr1 = [25, 10, 5, 3, 2, 1];
+console.log(bubbleSort(arr1));
+var arr2 = [10, 5, 1, 3, 9]
+console.log(bubbleSort(arr2))
 
 function insertionSort(array) {
   // Implementar el método conocido como insertionSort para ordenar de menor a mayor
