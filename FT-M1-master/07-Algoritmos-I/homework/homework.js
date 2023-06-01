@@ -36,7 +36,15 @@ function insertionSort(array) {
   // el array recibido como parámetro utilizando arreglos
   // Devolver el array ordenado resultante
   // Tu código:
-
+  for(let j = 1; j < array.length; j++){
+    for(let i = 0; i < array.length; i++){
+      if(array[j]<array[i]){
+        var aux2 = array[j];
+        array[j] = array[i];
+        array[i] = aux2;
+      }
+    }
+  }
 }
 
 
