@@ -16,9 +16,18 @@ const {
 
 var countArray = function(array) {
     // Tu código aca:
+    var sum = 0;
+    for(let i = 0; i < array.length; i++){
+        if(Array.isArray(array[i])){
+            sum = sum + countArray(array[i]);
+        }
+        else{
+            sum = sum + array[i];
+        }
+    }
     
+    return sum;
 }
-
 
 // Implementar la función countProps: a partir de un objeto en el cual cada propiedad puede contener
 // cualquier tipo de dato, determinar la cantidad de propiedades de objetos en cualquier nivel, ya sea el inicial
@@ -39,7 +48,15 @@ var countArray = function(array) {
 
 var countProps = function(obj) {
     // Tu código aca:
-
+    var count = 0;
+    var arrayValues = Object.values(obj)
+    count = count + arrayValues.length;
+    for(let i = 0; i < arrayValues; i++){
+        if(Object.values(arrayValues[i])){
+            count = count + countProps(arrayValues[i])
+        }
+    }
+    return count;
 }
 
 
