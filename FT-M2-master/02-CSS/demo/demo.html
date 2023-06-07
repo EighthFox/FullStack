@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- importa un archivo de estilos -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
+</head>
+<style media="screen">
+    .buttonComun {
+        color: white;
+        background-color: red;
+        border-radius: 5px;
+    }
+    body {
+	background-color: red;
+}
+
+/* Pantallas de menos de 992px de ancho */
+@media screen and (max-width: 992px) {
+	body {
+		background-color: blue;
+	}
+}
+
+/* Pantallas de menos de 600px de ancho */
+@media screen and (max-width: 600px) {
+	body {
+		background-color: black;
+	}
+    .buttonComun {
+        color: red;
+        background-color: white;
+        border-radius: 50px;
+    }
+}
+
+</style>
+<body>
+    <button type="button" class="buttonComun">Boton Común</button>
+    <button class="btn btn-danger">Boton Bootstrap</button>
+    <!-- Podemos entrar a la página de bootstrap y buscar botones https://getbootstrap.com/docs/5.3/components/buttons/ -->
+    <button type="button" class="btn btn-primary">Primary</button>
+</body>
+</html>

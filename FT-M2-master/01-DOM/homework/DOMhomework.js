@@ -54,7 +54,7 @@ ToDo.prototype.completeToDo = function(){
 function buildToDo(todo, index) {
   // Tu código acá:
   var toDoShell = document.createElement('div');
-  toDoShell.className = 'toDoShell';
+  toDoShell.className = 'toDoShell'; //classList.add("toDoShell") es similar.
   var toDoText = document.createElement('span');
   toDoText.innerHTML = todo.description;
   //toDoText.id = index;
@@ -81,8 +81,9 @@ function buildToDo(todo, index) {
 
 function buildToDos(toDos) {
   // Tu código acá:
-  var newArray = toDos.map(x => buildToDo(x, 0))
-
+  var newArray = toDos.map(function(x, i){
+    return buildToDo(x, i); 
+  });
   return newArray;
 }
 
@@ -100,9 +101,12 @@ function displayToDos() {
   var toDoContainer = document.querySelector('#toDoContainer');
   toDoContainer.innerHTML = "";
   var arrToDo = buildToDos(toDoItems);
-  for(let i = 0; i < arrToDo.length; i++){
-    toDoContainer.append(arrToDo[i]);
-  }
+  // for(let i = 0; i < arrToDo.length; i++){
+  //   toDoContainer.appendChild(arrToDo[i]);
+  // }
+  arrToDo.forEach(function (todo) {
+    toDoContainer.appendChild(todo)
+  });
 }
 
 // La función 'addToDo' agregará un nuevo ToDo al array 'toDoItems'
@@ -116,6 +120,7 @@ function displayToDos() {
 
 function addToDo() {
   // Tu código acá:
+  var toDoInput = document.querySelector("#toDoInput");
   var toDoElement = new ToDo(toDoInput.value);
   toDoItems.push(toDoElement);
   toDoInput.value = "";
@@ -148,7 +153,7 @@ function completeToDo(event) {
   // DESCOMENTAR LA SIGUIENTE LINEA
   const index = event.target.id;
   // Tu código acá:
-  toDoItems[index].completeToDo();
+  toDoItems[index].completeToDo(); //toDoItems.at(index).completeToDo();
   displayToDos();
 
 }
