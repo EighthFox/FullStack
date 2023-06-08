@@ -145,6 +145,9 @@ h5 {
   font-family: 'Russo One', sans-serif;
   color: #23293B;
 }
+h1 {
+  font-size: 3.7rem;
+}
 h2 {
   font-size: 3.2rem;
 }
@@ -159,6 +162,29 @@ p {
   max-width: 800px;
   width: 100%;
   margin: 0 auto;
+}
+nav {
+  background-color: #F6F6F6;
+  color: #454A59;
+  border: 1px solid #F1F1F1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+nav .optionsContainer {
+  display: flex;
+  flex-direction: row;
+  width: 60%;
+  justify-content: space-between;
+  font-size: 1.5em;
+  margin-top: 1em;
+}
+@media (max-width: 500px) {
+  nav .optionsContainer {
+    width: 90%;
+  }
 }
 footer {
   color: #22283B;
@@ -176,6 +202,16 @@ footer {
 .home .intro p {
   padding: 0 15px;
 }
+.home .headerImg {
+  border-radius: 20px;
+  margin-top: 5px;
+}
+@media (max-width: 500px) {
+  .home .headerImg {
+    width: 98%;
+    margin: 1%;
+  }
+}
 .home .music-images {
   display: flex;
   flex-wrap: wrap;
@@ -186,6 +222,17 @@ footer {
   margin: 20px 2.5%;
   border-radius: 20px;
   height: 100%;
+}
+@media (max-width: 500px) {
+  .home .music-images .tecnologia,
+  .home .music-images .ondas {
+    display: none;
+  }
+}
+@media (max-width: 500px) {
+  .home .music-images .auricular {
+    width: 98%;
+  }
 }
 .home .musica-nueva {
   padding: 15px;
@@ -212,6 +259,15 @@ footer {
 .home .actual .actual-text p {
   margin-bottom: 26px;
 }
+.home .actual .actual-text .btn {
+  background-color: #22283A;
+  width: fit-content;
+  height: fit-content;
+  font-size: 1.5em;
+  color: #F6F6F6;
+  padding: 0.6em;
+  border-radius: 5px;
+}
 .home .actual .actual-img {
   width: 46%;
   margin-left: 4%;
@@ -220,4 +276,30 @@ footer {
   width: 100%;
   height: auto;
   border-radius: 10px;
+}
+@media (max-width: 500px) {
+  .home .actual {
+    flex-direction: column-reverse;
+    /*invertir el orden*/
+    padding: 0px;
+  }
+  .home .actual .actual-text {
+    width: 98%;
+    margin: 1%;
+  }
+  .home .actual .actual-text .btn {
+    background-color: #22283A;
+    width: 97%;
+    height: fit-content;
+    font-size: 1.5em;
+    color: #F6F6F6;
+    text-align: center;
+    margin: 1.5%;
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+  .home .actual .actual-img {
+    width: 98%;
+    margin: 1%;
+  }
 }
