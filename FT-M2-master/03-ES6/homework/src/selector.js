@@ -9,10 +9,10 @@ var traverseDomAndCollectElements = function (matchFunc, startEl) {
   // usa matchFunc para identificar elementos que matchien
 
   // TU CÓDIGO AQUÍ
-
-  const allElements = startEl.getElementsByTagName('*');
-  for(element of allElements){
-    if(matchFunc(element)) resultSet.push(element)
+  if(matchFunc(startEl)) resultSet.push(startEl)
+  for(let i = 0; i < startEl.children.length; i++){
+    let result = traverseDomAndCollectElements(matchFunc, startEl.children[i])
+    resultSet = [...resultSet, ...result];
   }
   return resultSet;
 };
@@ -49,20 +49,27 @@ var matchFunctionMaker = function (selector) {
     }
   } else if (selectorType === "class") {
     matchFunction = arg => {
-      const arrSelector = arg.className.split(' ');
-      for(let i = 0; i < arrSelector.length; i++){
-        if(arrSelector[i] === selector.slice(1)) return true;
+      // const arrSelector = arg.className.split(' ');
+      // for(let i = 0; i < arrSelector.length; i++){
+      //   if(arrSelector[i] === selector.slice(1)) return true;
+      // }
+      for (const cls of arg.classList){
+        if(cls === selector.slice(1)) return true;
       }
       return false
     }
   } else if (selectorType === "tag.class") {
     matchFunction = arg => {
       const classSelector = selector.split('.');
-      const arrSelector = arg.className.split(' ');
-      for(let i = 0; i < arrSelector.length; i++){
-        if(arrSelector[i] === classSelector[1] && arg.tagName.toLowerCase() === classSelector[0]) return true;
-      }
-      return false
+      // const arrSelector = arg.className.split(' ');
+      // for(let i = 0; i < arrSelector.length; i++){
+      //   if(arrSelector[i] === classSelector[1] && arg.tagName.toLowerCase() === classSelector[0]) return true;
+      // }
+      // for (const cls of arg.classList){
+      //   if(cls === classSelector[1] && arg.tagName.toLowerCase() === classSelector[0]) return true;
+      // }
+      // return false
+      return (matchFunctionMaker(classSelector[0])(arg) && matchFunctionMaker("." + classSelector[1])(arg))
     }
   } else if (selectorType === "tag") {
     matchFunction = arg => {
