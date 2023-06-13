@@ -5,20 +5,24 @@ import cssImg from '../../assets/css.svg'
 import javascriptImg from '../../assets/javascript.png'
 import reactImg from '../../assets/react.png'
 import redux from '../../assets/redux.png'
-// import styles from './Bienvenido.module.css'
+import styles from './Bienvenido.module.css'
 
-const studentName = 'Nombre alumno'
+const studentName = 'Emiliano'
 const techSkills = [{ tech: 'Html', image: htmlImg }, { tech: 'Css', image: cssImg }, { tech: 'JavaScript', image: javascriptImg }, { tech: 'React', image: reactImg }, { tech: 'Redux', image: redux }]
 const alerts = { m1: 'Aprobado', m2: 'En curso' }
 
+const h1Style = { // inlineStyling
+  color: 'red',
+};
+
 export default function Bienvenido () {
   return (
-    <div>
-      <h1>soy Henry!</h1>
-      <h3>{studentName}</h3>
-      <ul>
+    <div className={styles.divBienvenido}>  {/* CSS Module */}
+      <h1 style={h1Style} className={styles.title}>soy Henry!</h1>  {/* InlineStyling and CSS Module */}
+      <h3 className={styles.subtitle}>{studentName}</h3>
+      <ul className={styles.unorderedList}>
         {techSkills.map(skill => (
-          <li key={skill}>{skill.tech}<img src={skill.image} alt={skill.tech} /></li>
+          <li className={styles.listItem} key={skill}>{skill.tech}<img src={skill.image} alt={skill.tech} /></li>
         ))}
       </ul>
       <Botones alerts={alerts} />
