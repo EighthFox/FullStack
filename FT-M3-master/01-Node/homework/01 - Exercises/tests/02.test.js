@@ -95,7 +95,7 @@ describe('02 | Ejercicios', () => {
           return Math.pow(i, Infinity);
         }
       }
-    })()();`
+})()();`
 		)
 		expect(printSpy).toHaveBeenCalledWith(`})()();`)
 		done()

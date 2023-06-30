@@ -19,15 +19,32 @@ args.forEach(function (arg) {
 
 function problemA() {
   // callback version
-  exerciseUtils.readFile("poem-two/stanza-01.txt", function (err, stanza) {
-    exerciseUtils.blue(stanza);
-  });
-  exerciseUtils.readFile("poem-two/stanza-02.txt", function (err, stanza) {
-    exerciseUtils.blue(stanza);
-  });
+  // exerciseUtils.readFile("poem-two/stanza-01.txt", function (err, stanza) {
+  //   exerciseUtils.blue(stanza);
+  // });
+  // exerciseUtils.readFile("poem-two/stanza-02.txt", function (err, stanza) {
+  //   exerciseUtils.blue(stanza);
+  // });
 
   // promise version
   // Tu código acá:
+  exerciseUtils.promisifiedReadFile("poem-two/stanza-01.txt").then(
+    (stanza) => (exerciseUtils.blue(stanza))
+  )
+  exerciseUtils.promisifiedReadFile("poem-two/stanza-02.txt").then(
+    (stanza) => exerciseUtils.blue(stanza)
+  )
+  console.log("done");
+
+  //promise version con promesas resueltas en simultaneo Promise.all
+  // Promise.all([
+  //   exerciseUtils.promisifiedReadFile("poem-two/stanza-01.txt"),exerciseUtils.promisifiedReadFile("poem-two/stanza-02.txt")
+  // ]).then(
+  //   (stanzas) => {
+  //     stanzas.forEach((stanza) => (exerciseUtils.blue(stanza)));
+  //     console.log("done");
+  //   }
+  // )
 }
 
 function problemB() {
@@ -38,15 +55,22 @@ function problemB() {
   filenames[randIdx] = "wrong-file-name-" + (randIdx + 1) + ".txt";
 
   // callback version
-  filenames.forEach((filename) => {
-    exerciseUtils.readFile(filename, function (err, stanza) {
-      exerciseUtils.blue(stanza);
-      if (err) exerciseUtils.magenta(new Error(err));
-    });
-  });
+  // filenames.forEach((filename) => {
+  //   exerciseUtils.readFile(filename, function (err, stanza) {
+  //     exerciseUtils.blue(stanza);
+  //     if (err) exerciseUtils.magenta(new Error(err));
+  //   });
+  // });
 
   // promise version
   // Tu código acá:
+  filenames.forEach((filename) => {
+    exerciseUtils.promisifiedReadFile(filename).then(
+      (stanza) => exerciseUtils.blue(stanza),
+      (error) => exerciseUtils.magenta(new Error(error))
+    )
+  });
+  console.log("done");
 }
 
 // EJERCICIO EXTRA

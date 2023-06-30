@@ -5,8 +5,9 @@ const commands = require('./commands/index.js');
 function bash() {
    process.stdout.write("prompt > ");
    process.stdin.on("data",(data) => {
-      const args = toString(data);
-      const cmd = args.split(' ');
+      let args = data.toString().trim().split(" ");
+      let cmd = args.shift();
+      args = args.join(" ");
 
       if(!commands[cmd]){
          print("command not found: " + cmd)

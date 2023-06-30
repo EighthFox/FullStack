@@ -39,7 +39,7 @@ function head(print, args) {
         if(error){
             throw error;
         }else{
-            print(data.slice(0,data.indexOf('\n')));
+            print(data.split("\n").splice(0,1).join("\n"));
         };
     })
 }
@@ -49,7 +49,7 @@ function tail(print, args) {
         if(error){
             throw error;
         }else{
-            print(data.slice(data.lastIndexOf(' ')+1));
+            print(data.split("\n").splice(-1).join("\n"));
         };
     })
 }
