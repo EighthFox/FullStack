@@ -35,9 +35,16 @@ function problemA() {
       exerciseUtils.promisifiedReadFile("poem-one/stanza-03.txt").then(
         (stanza3) => {
           exerciseUtils.blue(stanza3);
+          console.log("done");
         })
     })
-  console.log("done");
+  
+  // Promise.all([
+  //   exerciseUtils.promisifiedReadFile("poem-one/stanza-02.txt"),
+  //   exerciseUtils.promisifiedReadFile("poem-one/stanza-03.txt")]).then((stanzas) => {
+  //     stanzas.forEach((stanza) => exerciseUtils.blue(stanza));
+  //     console.log("done");
+  //   });
 }
 
 function problemB() {

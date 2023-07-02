@@ -3,7 +3,7 @@ const axios = require("axios");
 
 const miUsers = axios
     .get("https://jsonplaceholder.typicode.com/users").then(
-        (response) => console.log(response.data),
+        (response) => {return response.data},
         (error) => console.log("Todo salio mal", error)
     );
 
