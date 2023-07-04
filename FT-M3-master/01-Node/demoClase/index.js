@@ -1,15 +1,17 @@
 const { NOMBRE1, NOMBRE2 } = require("./const/nombres.js");
 const axios = require("axios");
 
-const miUsers = axios
+const getUsers = async () => {
+    const miUsers = await axios
     .get("https://jsonplaceholder.typicode.com/users").then(
-        (response) => {return response.data},
-        (error) => console.log("Todo salio mal", error)
+        (response) => {response.data.json()},
+        console.log(miUsers)
     );
-
+    
+}
 // console.log(NOMBRE1);
 // console.log(NOMBRE2);    
-console.log(miUsers);
+
 
 //users.map((user) => (console.log(user)));
 // console.log(arrayName);
