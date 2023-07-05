@@ -10,37 +10,28 @@ server.use(express.json());
 server.post("/posts", (request, response) => {
     const { author, title, contents } = request.body;
     if( author && title && contents ){
-        const newObj = {
+        const newPublic = {
             id: ++id,
-            author: author,
-            title: title,
-            contents: contents
+            author,
+            title,
+            contents
         }
-        publications.push(newObj);
-        response.status(200).json(newObj);
+        publications.push(newPublic);
+        response.status(200).json(newPublic);
     } else {
-        response.status(404).json({error: "No se recibieron los parámetros necesarios para crear la publicación"});
+        response.status(422).json({error: "No se recibieron los parámetros necesarios para crear la publicación"});
     }
 });
 
 server.get("/posts", (request, response) => {
-    const author = request.query.author
-        .split("?")[1]
-        .split("&")[0]
-        .split("=")[1]
-    .replace("%20", " ");
-    const title = request.query.title
-        .split("?")[1]
-        .split("&")[0]
-        .split("=")[1]
-        .replace("%20", " ");
+    const { author, title } = request.query;
     const samePublications = publications.filter((publication) => {
-        publication.author === author && publication.title === title
+        return publication.author === author && publication.title === title
     })
-    if(samePublications.length > 0) 
+    if(samePublications.length) 
         response.status(200).json(samePublications);
     else 
-        response.status(404).json({error: "No existe ninguna publicación con dicho título y autor indicado"});
+        response.status(422).json({error: "No existe ninguna publicación con dicho título y autor indicado"});
 });
 
 server.get("/posts/:author", (request, response) => {
@@ -48,7 +39,7 @@ server.get("/posts/:author", (request, response) => {
     const publicationAuthor = publications.filter((publication) => {
         publication.author === author
     })
-    if(publicationAuthor.length > 0){
+    if(publicationAuthor.length){
         response.status(200).json(publicationAuthor);
     } else {
         response.status(404).json({error: "No existe ninguna publicación del autor indicado"});
@@ -59,17 +50,35 @@ server.put("/posts/:id", (request, response) => {
     const { id } = request.params;
     const { title, contents } = request.body;
     if( id && title && contents ){
-        const publicationId = publications.filter((publication) => publication.id === id)
-        if(publicationId > 0){
-            const publicationUpdate = {...publicationId, title: title, contents: contents};
-            publications[publications.indexOf(publicationId)] = publicationUpdate;
-            response.status(200).json(publicationUpdate)
+        const publiId = publications.find((publication) => publication.id === parseInt(id))
+        if(publiId){
+            publiId.title = title;
+            publiId.contents = contents;
+            response.status(200).json(publiId)
         }
         else {
             response.status(404).json({error: "No se recibió el id correcto necesario para modificar la publicación"});  
         }
     } else {
         response.status(404).json({error: "No se recibieron los parámetros necesarios para modificar la publicación"});
+    }
+});
+
+server.delete("/posts/:id", (request, response) => {
+    const { id } = request.params;
+    if( id ){
+        // const publicationId = publications.filter((publication) => publication.id === id)
+        const publicationId = publications.find((publication) => publication.id === parseInt(id))
+        if(publicationId){
+            // delete publications[publications.indexOf(publicationId)];
+            publications = publications.filter((publication) => publication.id !== id)
+            response.status(200).json({ success: true })
+        }
+        else {
+            response.status(404).json({error: "No se recibió el id correcto necesario para eliminar la publicación"});  
+        }
+    } else {
+        response.status(404).json({error: "No se recibió el id de la publicación a eliminar"});
     }
 });
 
