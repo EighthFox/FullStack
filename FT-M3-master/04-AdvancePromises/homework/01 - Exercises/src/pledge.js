@@ -112,15 +112,12 @@ class $Promise{
     }
     static all(arr) {
         if(!Array.isArray(arr)) throw TypeError("arr must be arr");
+        const isAllPromise = (currentValue) => currentValue instanceof $Promise
+        if(arr.every(isAllPromise)){
+            const arrValue = arr.map((value) => value._value)
+            arr = arrValue;
+        }
         const newPromise = new $Promise(() => {});
-        // const arrValue = arr.map((value) => 
-        //     {
-        //         if(value instanceof $Promise) return value;
-        //         else {
-        //             newPromise._internalResolve(value);
-        //             return newPromise;
-        //         }
-        //     })
         newPromise._internalResolve(arr);
         return newPromise;
     }
