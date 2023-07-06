@@ -1,12 +1,38 @@
 const { Router } = require('express');
 const {
+    getPosts,
+    getPostsById,
+    getPostsByUserId,
     createPost,
+    updatePost,
+    deletePost,
 } = require("../models/controllers")
 
 const postsRouter = Router();
 
 postsRouter.get("/", (req, res) => {
-    res.send("Estoy en las rutas de posts")
+    try {    
+        const { userId } = req.query;
+        if(userId){
+            const posts = getPostsByUserId(userId);
+            res.status(200).json(posts);
+        } else {
+            const posts = getPosts();
+            return res.status(200).json(posts);
+        }
+    } catch(error){
+        res.status(400).json(error.message);
+    }
+});
+
+postsRouter.get("/:id", (req, res) => {
+    try {
+        const { id } = req.params;
+        const posts = getPostsById(id);
+        res.status(200).json(posts);
+    } catch (error) {
+        res.status(400).json(error.message);
+    }
 });
 
 postsRouter.post("/", (req, res) => {
@@ -21,9 +47,25 @@ postsRouter.post("/", (req, res) => {
     }
 });
 
-//RUTA GET POSTS => PARA QUE ME TRAIGA TODOS LOS POSTS
-//RUTA GET POSTS/:ID => PARA QUE ME TRAIGA EL POST DEL ID
-//RUTA PUT DE POSTS = PARA MODIFICAR EL POST
-//RUTA DELETE DE POSTS => PARA BORRAR EL POST
+postsRouter.put("/", (req, res) => {
+    try {
+        const { userId, title, contents, id } = req.body;
+        if(!userId || !title || !contents || !id) throw new Error("Missing info");
+        const updatedPost = updatePost(userId, title, contents, id);
+        res.status(200).json(updatedPost);
+    } catch(error) {
+        res.status(400).json(error.message);
+    }
+});
+
+postsRouter.delete("/:id", (req, res) => {
+    try {
+        const { id } = req.params;
+        const deletedPost = deletePost(id);
+        res.status(200).json(deletedPost);
+    } catch (error) {
+        res.status(400).json(error.message);
+    }
+});
 
 module.exports = postsRouter;

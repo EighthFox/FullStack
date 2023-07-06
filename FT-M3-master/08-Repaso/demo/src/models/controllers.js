@@ -55,6 +55,26 @@ const deleteUser = (id) => {
     return user;
 };
 
+const getPosts = () => {
+    return posts;
+};
+
+const getPostsByUserId = (userId) => {
+    const user = users.find((user) => user.id === parseInt(userId));
+    if (!user) throw new Error("User not found");
+    const result = posts.filter((posts) => {
+        return posts.userId === parseInt(userId);
+    });
+    if(result.length) return result;
+    return new Error("Posts not found");
+};
+
+const getPostsById = (id) => {
+    const result = posts.filter(post => post.id === parseInt(id));
+    if(result.length) return result;
+    else throw new Error("Post not found");
+};
+
 let postsId = 1;
 const createPost = ( title, contents, userId ) => {
     const user = users.find((user) => user.id === parseInt(userId));
@@ -69,6 +89,27 @@ const createPost = ( title, contents, userId ) => {
     posts.push(newPost);
     user.posts.push(newPost.id);
     return newPost;
+};
+
+const updatePost = ( userId, title, contents, id ) => {
+    const post = posts.find(post => post.id === parseInt(id));
+    if (!post) throw new Error("Posts not found");
+    const user = users.find((user) => user.id === parseInt(userId));
+    if (!user) throw new Error("User not found");
+
+    post.userId = userId;
+    post.title = title;
+    post.contents = contents;
+
+    return post;
+}
+
+const deletePost = (id) => {
+    const post = posts.find(post => post.id === parseInt(id))
+    if(!post) throw new Error("Post not found")
+
+    posts = posts.filter(post => post.id !== parseInt(id))
+    return post;
 }
 
 module.exports = {
@@ -78,5 +119,10 @@ module.exports = {
     createUsers,
     updateUser,
     deleteUser,
+    getPosts,
+    getPostsById,
+    getPostsByUserId,
     createPost,
+    updatePost,
+    deletePost,
 }
