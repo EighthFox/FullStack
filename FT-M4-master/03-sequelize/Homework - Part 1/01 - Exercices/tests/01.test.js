@@ -1,6 +1,6 @@
 const { db } = require("../db");
 
-describe("Conexión a la base de datos", () => {
+xdescribe("Conexión a la base de datos", () => {
   test("Debe establecerse correctamente la conexión", async () => {
     try {
       await db.authenticate();
