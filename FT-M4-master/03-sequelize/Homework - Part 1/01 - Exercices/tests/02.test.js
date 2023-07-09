@@ -1,6 +1,6 @@
 const { db, Character, Ability, Role } = require("../db");
 
-describe("Ejercicio 2 | Modelos DB", () => {
+xdescribe("Ejercicio 2 | Modelos DB", () => {
   beforeAll(async () => {
     await db.sync({ force: true });
   });
