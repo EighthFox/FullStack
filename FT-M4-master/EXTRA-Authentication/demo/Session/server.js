@@ -1,5 +1,5 @@
 const express = require('express');
-const cookieparser = require('cookie-parser');
+const cookieparser = require('cookie-parser'); //transforma la cookie que llega en formato json a objeto de JS.
 const session = require('express-session');
 const morgan = require('morgan');
 
@@ -18,12 +18,12 @@ app.use(cookieparser());
 
 app.use(session(
   {
-    name: 'sid',
-    secret:'secret', // Debería estar en un archivo de environment
+    name: 'sid', //Nombre con el que vamos a encontrar a la cookie en el navegador
+    secret:'secret', // Debería estar en un archivo de environment(código alfanumérico para comparar la sesión)
     resave:false,
     saveUninitialized:false,
     cookie:{
-      maxAge: 1000 * 60 * 60 * 2 // Está en milisegundos --> 2hs
+      maxAge: 1000 * 60 * 60 * 2 // Está en milisegundos --> 2hs. Duración de la cookie lo que obliga a que nos volvamos a loguear.
     }
   }
 ));

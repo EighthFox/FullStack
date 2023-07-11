@@ -1,5 +1,5 @@
 var express = require('express');
-var passport = require('passport');
+var passport = require('passport'); 
 var Strategy = require('passport-local').Strategy;
 var db = require('./db');
 
@@ -40,6 +40,7 @@ passport.use(new Strategy(
 // los demás datos de ese usuario. Esto permite que la información almacenada en la sesión sea
 // lo más simple y pequeña posible
 
+//serializo - guardo el id del user en la cookie y está listo para enviar.
 passport.serializeUser(function(user, done) {
   done(null, user.id);
 });
@@ -101,7 +102,7 @@ app.post('/login',
 
 app.get('/logout',
   function(req, res){
-    req.logout();
+    req.logout(); //Similar al método distroy.
     res.redirect('/');
   });
 
