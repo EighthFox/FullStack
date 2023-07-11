@@ -34,7 +34,7 @@ app.use((req, res, next) => {
 });
 
 const redirectLogin = (req, res, next) => {
-  if(!req.session.userId) {
+  if(!req.session.userId) { 
     res.redirect('/login');
   } else {
     next();
@@ -42,7 +42,7 @@ const redirectLogin = (req, res, next) => {
 }
 
 const redirectHome = (req, res, next) => {
-  if(req.session.userId) {
+  if(req.session.userId) { //Si ya hay un userId es porque ya estoy logeado y me manda al home
     res.redirect('/home');
   } else {
     next();
@@ -107,7 +107,7 @@ app.post('/login', redirectHome, (req, res) => {
   if(email && password) {
     const user = users.find(user => user.email === email && user.password === password);
     if(user) {
-      req.session.userId = user.id;
+      req.session.userId = user.id; //Setea en session el valor user.id para enviarlo por cookie.
       return res.redirect('/home')
     }
   }
@@ -136,12 +136,12 @@ app.post('/register', redirectHome, (req, res) => {
 });
 
 app.post('/logout', redirectLogin, (req, res) => {
-  req.session.destroy(err => {
+  req.session.destroy(err => { //destruye la sesión
     if(err) {
       return res.redirect('/home');
     }
-    res.clearCookie('sid');
-    res.redirect('/');
+    res.clearCookie('sid'); //elimina la cookie que tiene el nomber sid
+    res.redirect('/'); //Redirije al path '/'
   })
 });
 
