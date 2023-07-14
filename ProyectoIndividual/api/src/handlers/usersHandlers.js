@@ -3,6 +3,8 @@ const getUsersHandler = (req, res) => {
 };
 
 const getUserHandler = (req, res) => {
+    const { id } = req.params;
+    
 
 };
 
